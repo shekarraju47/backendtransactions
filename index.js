@@ -34,6 +34,10 @@ const transactionSchema = new mongoose.Schema({
 
 const Transaction = mongoose.model("Transaction", transactionSchema);
 
+app.get("/", (req, res) => {
+  res.json({ msg: "hello world" });
+});
+
 // Get all transactions
 app.get("/api/transactions", async (req, res) => {
   const transactions = await Transaction.find();
