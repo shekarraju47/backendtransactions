@@ -58,6 +58,15 @@ app.post("/api/transactions", async (req, res) => {
   res.json(transaction);
 });
 
+app.delete("/api/delete/:id", async (req, res) => {
+  try {
+    await Transaction.findByIdAndDelete({ _id: req.params.id });
+    res.status(200).send("delete SuccessFull");
+  } catch (error) {
+    res.status(400).send("something wrong");
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
