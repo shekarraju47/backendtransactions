@@ -58,7 +58,8 @@ app.post("/api/transactions", async (req, res) => {
   res.json(transaction);
 });
 
-app.delete("/api/delete/:id", async (req, res) => {
+app.delete("/api/transactions/:id", async (req, res) => {
+  console.log(req.params);
   try {
     await Transaction.findByIdAndDelete({ _id: req.params.id });
     res.status(200).send("delete SuccessFull");
